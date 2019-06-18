@@ -281,10 +281,10 @@ GameController.prototype.onReady = function(client)
  */
 GameController.prototype.checkReady = function()
 {
-    /*if (this.game.isReady()) {
+    if (this.game.isReady()) {
         this.waiting = clearTimeout(this.waiting);
         this.game.newRound();
-    }*/
+    }
 };
 
 /**
