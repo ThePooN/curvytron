@@ -534,9 +534,9 @@ RoomController.prototype.onReady = function(client, data, callback)
         callback({success: true, ready: player.ready});
         this.socketGroup.addEvent('player:ready', { player: player.id, ready: player.ready });
 
-        if (this.room.isReady()) {
+        /*if (this.room.isReady()) {
             this.launch();
-        }
+        }*/
     } else {
         callback({success: false, error: 'Player with id "' + data.player + '" not found'});
     }
