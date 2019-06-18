@@ -6,7 +6,6 @@ var fs        = require('fs'),
     jshint    = require('gulp-jshint'),
     sass      = require('gulp-sass'),
     rename    = require('gulp-rename'),
-    plumber   = require('gulp-plumber'),
     gutil     = require('gulp-util'),
     minifyCSS = require('gulp-minify-css'),
     htmlmin   = require('gulp-html-minifier'),
@@ -118,7 +117,6 @@ gulp.task('server', function() {
 
 gulp.task('sass-full', function() {
     return gulp.src(sassDir + 'style.scss')
-        .pipe(plumber({ errorHandler: onError }))
         .pipe(sass())
         .pipe(rename('style.css'))
         .pipe(gulp.dest(cssDir));
@@ -126,7 +124,6 @@ gulp.task('sass-full', function() {
 
 gulp.task('sass-min', function() {
     return gulp.src(sassDir + 'style.scss')
-        .pipe(plumber({ errorHandler: onError }))
         .pipe(sass())
         .pipe(minifyCSS())
         .pipe(rename('style.css'))
