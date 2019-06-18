@@ -208,7 +208,7 @@ RoomController.prototype.nominateRoomMaster = function()
 {
     if (this.clients.isEmpty() || this.roomMaster) { return; }
 
-    var roomMaster = this.clients.match(function () { return this.active && this.isPlaying(); });
+    var roomMaster = this.clients.match(function () { return this.active; });
 
     this.setRoomMaster(roomMaster);
 };
