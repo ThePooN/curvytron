@@ -119,7 +119,7 @@ RoomController.prototype.onJoined = function(result)
         this.$scope.room = this.room;
 
         this.attachEvents();
-        if(!window.spectator) {
+        if(!this.profile.spectator) {
             this.addProfileUser();
         }
         this.requestDigestScope();

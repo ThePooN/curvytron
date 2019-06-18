@@ -5,12 +5,13 @@ function Profile()
 {
     EventEmitter.call(this);
 
-    this.name     = null;
-    this.color    = null;
-    this.sound    = true;
-    this.radio    = false;
-    this.loading  = false;
-    this.controls = [
+    this.name      = null;
+    this.color     = null;
+    this.sound     = true;
+    this.radio     = false;
+    this.loading   = false;
+    this.spectator = false;
+    this.controls  = [
         new PlayerControl(37, 'icon-left-dir'),
         new PlayerControl(39, 'icon-right-dir')
     ];
@@ -51,6 +52,7 @@ Profile.prototype.serialize = function()
         color: this.color,
         sound: this.sound,
         radio: this.radio,
+        spectator: this.spectator,
         controls: this.getMapping()
     };
 };
@@ -76,6 +78,10 @@ Profile.prototype.unserialize = function(data)
 
     if (typeof(data.radio) !== 'undefined') {
         this.setRadio(data.radio);
+    }
+
+    if (typeof(data.spectator) !== 'undefined') {
+        this.setSpectator(data.spectator);
     }
 
     if (typeof(data.controls) !== 'undefined') {
@@ -198,6 +204,19 @@ Profile.prototype.setRadio = function(radio)
 {
     if (this.radio !== radio) {
         this.radio = radio;
+        this.persist();
+    }
+};
+
+/**
+ * Set spectator
+ *
+ * @param {Boolean} spectator
+ */
+Profile.prototype.setSpectator = function(spectator)
+{
+    if (this.spectator !== spectator) {
+        this.spectator = spectator;
         this.persist();
     }
 };
